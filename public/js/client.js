@@ -4,6 +4,7 @@ const allusersHtml = document.getElementById("allusers");
 const localVideo = document.getElementById("localVideo");
 const remoteVideo = document.getElementById("remoteVideo");
 const endCallBtn = document.getElementById("end-call-btn");
+const usernameContainer = document.getElementById("username-container");
 const socket = io();
 let localStream;
 let caller = [];
@@ -53,9 +54,8 @@ const PeerConnection = (function () {
 // handle browser events
 createUserBtn.addEventListener("click", (e) => {
   if (username.value !== "") {
-    const usernameContainer = document.querySelector(".username-input");
     socket.emit("join-user", username.value);
-    usernameContainer.style.display = "none";
+    usernameContainer.classList.add("hidden");
   }
 });
 endCallBtn.addEventListener("click", (e) => {
@@ -75,7 +75,7 @@ socket.on("joined", (allusers) => {
       if (user !== username.value) {
         const button = document.createElement("button");
         button.textContent = "Call";
-        button.classList.add("call-btn");
+        button.classList.add("bg-green-500", "hover:bg-green-600", "text-white", "font-bold", "py-1", "px-2", "rounded", "ml-2");
         button.addEventListener("click", (e) => {
           startCall(user);
         });
@@ -102,7 +102,7 @@ socket.on("answer", async ({ from, to, answer }) => {
   const pc = PeerConnection.getInstance();
   await pc.setRemoteDescription(answer);
   // show end call button
-  endCallBtn.style.display = "block";
+  endCallBtn.classList.remove("hidden");
   socket.emit("end-call", { from, to });
   caller = [from, to];
 });
@@ -112,7 +112,7 @@ socket.on("icecandidate", async (candidate) => {
   await pc.addIceCandidate(new RTCIceCandidate(candidate));
 });
 socket.on("end-call", ({ from, to }) => {
-  endCallBtn.style.display = "block";
+  endCallBtn.classList.remove("hidden");
 });
 socket.on("call-ended", (caller) => {
   endCall();
@@ -136,7 +136,7 @@ const endCall = () => {
   const pc = PeerConnection.getInstance();
   if (pc) {
     pc.close();
-    endCallBtn.style.display = "none";
+    endCallBtn.classList.add("hidden");
   }
 };
 

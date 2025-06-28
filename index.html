@@ -5,34 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Calling App</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="/js/client.js" defer></script>
 </head>
 
-<body>
+<body class="bg-gray-900 text-white">
 
-    <main class="main-container">
-        <aside class="caller-list-wrapper">
-            <h1 class="caller-list-heading h-font">Contacts</h1>
-            <ul id="allusers" class="caller-list">
+    <main class="flex h-screen">
+        <aside class="w-1/4 bg-gray-800 p-4">
+            <h1 class="text-2xl font-bold mb-4">Contacts</h1>
+            <ul id="allusers" class="space-y-2">
             </ul>
         </aside>
-        <section class="video-call-container">
-            <div class="username-input">
-                <input id="username" type="text" placeholder="Enter Username"><button id="create-user">Create</button>
+        <section class="flex-1 flex flex-col">
+            <div id="username-container" class="flex justify-center items-center p-4 bg-gray-800">
+                <input id="username" type="text" placeholder="Enter Username" class="bg-gray-700 text-white p-2 rounded-l-md focus:outline-none">
+                <button id="create-user" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-md">Create</button>
             </div>
-            <div class="video-streams">
-
-                <div class="local-video">
-                    <video id="localVideo" autoplay muted playsinline></video>
+            <div class="flex-1 grid grid-cols-2 gap-4 p-4">
+                <div class="bg-gray-800 rounded-lg">
+                    <video id="localVideo" autoplay muted playsinline class="w-full h-full object-cover rounded-lg"></video>
                 </div>
-                <div class="remote-video">
-                    <video id="remoteVideo" autoplay muted playsinline></video>
+                <div class="bg-gray-800 rounded-lg">
+                    <video id="remoteVideo" autoplay muted playsinline class="w-full h-full object-cover rounded-lg"></video>
                 </div>
             </div>
-            <div>
-                <button id="end-call-btn" class="call call-disconnect d-none">
+            <div class="flex justify-center p-4">
+                <button id="end-call-btn" class="hidden bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                     End Call
                 </button>
             </div>
