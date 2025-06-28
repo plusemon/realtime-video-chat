@@ -4,29 +4,29 @@ This is a simple real-time video chat application that allows users to connect w
 
 ## Features
 
-*   **User Authentication:** Users can create a username to join the chat.
-*   **Contact List:** See a list of all online users.
-*   **WebRTC Video/Audio:** Engage in one-on-one video calls.
-*   **Real-time Communication:** Socket.io enables instant messaging and call signaling.
+- **User Authentication:** Users can create a username to join the chat.
+- **Contact List:** See a list of all online users.
+- **WebRTC Video/Audio:** Engage in one-on-one video calls.
+- **Real-time Communication:** Socket.io enables instant messaging and call signaling.
 
 ## Technologies Used
 
-*   **Frontend:** HTML, CSS, JavaScript
-*   **Backend:** Node.js, Express.js
-*   **Real-time Communication:** Socket.io
-*   **Peer-to-Peer Connection:** WebRTC
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** Node.js, Express.js
+- **Real-time Communication:** Socket.io
+- **Peer-to-Peer Connection:** WebRTC
 
 ## Getting Started
 
 ### Prerequisites
 
-*   Node.js and npm installed on your machine.
+- Node.js and npm installed on your machine.
 
 ### Installation
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/your-username/realtime-video-chat.git
+    git clone https://github.com/plusemon/realtime-video-chat.git
     ```
 2.  Navigate to the project directory:
     ```bash
